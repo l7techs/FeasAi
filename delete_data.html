@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Delete Your Data — FeasAI</title>
+  <meta name="description" content="Request deletion of your data from FeasAI." />
+  <meta name="theme-color" content="#0F172A" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg-deep: #0F172A;
+      --bg-card: #1E293B;
+      --primary: #3B82F6;
+      --primary-deep: #1A56DB;
+      --secondary: #14B8A6;
+      --accent: #F59E0B;
+      --error: #F87171;
+      --text-primary: #F1F5F9;
+      --text-secondary: #94A3B8;
+      --text-muted: #64748B;
+      --border: rgba(255,255,255,0.06);
+      --border-strong: rgba(255,255,255,0.1);
+      --radius: 16px;
+      --radius-sm: 10px;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'DM Sans', system-ui, -apple-system, sans-serif;
+      background: var(--bg-deep);
+      color: var(--text-secondary);
+      line-height: 1.75;
+      -webkit-font-smoothing: antialiased;
+      font-size: 15px;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .nav {
+      padding: 16px 24px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      max-width: 720px;
+      width: 100%;
+      margin: 0 auto;
+    }
+    .nav-logo {
+      font-size: 1.25rem;
+      font-weight: 700;
+      text-decoration: none;
+      color: var(--text-primary);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .nav-logo-icon {
+      width: 34px; height: 34px;
+      border-radius: 9px;
+      background: linear-gradient(135deg, var(--primary-deep), var(--secondary));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+      font-weight: 800;
+      color: #fff;
+    }
+    .nav-back {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.88rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    .nav-back:hover { color: var(--primary); }
+
+    .main {
+      flex: 1;
+      max-width: 720px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 60px 24px 80px;
+    }
+
+    .icon-circle {
+      width: 72px; height: 72px;
+      border-radius: 50%;
+      background: rgba(245,158,11,0.1);
+      border: 2px solid rgba(245,158,11,0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      margin-bottom: 24px;
+    }
+
+    h1 {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 12px;
+      line-height: 1.25;
+    }
+
+    .subtitle {
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      margin-bottom: 36px;
+      max-width: 520px;
+    }
+
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 32px;
+      margin-bottom: 28px;
+    }
+
+    .card h2 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 16px;
+    }
+
+    .card ul { margin: 0 0 0 20px; }
+    .card li { margin-bottom: 8px; }
+
+    .info-card {
+      background: rgba(59,130,246,0.06);
+      border: 1px solid rgba(59,130,246,0.15);
+      border-left: 3px solid var(--primary);
+      border-radius: var(--radius-sm);
+      padding: 20px 24px;
+      margin-bottom: 28px;
+    }
+
+    .info-card strong { color: var(--primary); }
+
+    strong { color: var(--text-primary); font-weight: 600; }
+    a { color: var(--primary); text-decoration: none; transition: color 0.2s; }
+    a:hover { color: var(--secondary); }
+
+    .steps-card { counter-reset: step; }
+
+    .step-item {
+      display: flex;
+      gap: 16px;
+      margin-bottom: 20px;
+      align-items: flex-start;
+    }
+    .step-item:last-child { margin-bottom: 0; }
+
+    .step-num {
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      background: rgba(59,130,246,0.1);
+      border: 1px solid rgba(59,130,246,0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 0.85rem;
+      color: var(--primary);
+      flex-shrink: 0;
+    }
+
+    .step-text { padding-top: 6px; }
+    .step-text strong { color: var(--text-primary); }
+
+    .email-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 32px;
+      border-radius: var(--radius-sm);
+      background: linear-gradient(135deg, var(--primary-deep), var(--primary));
+      color: #fff;
+      font-family: inherit;
+      font-size: 1rem;
+      font-weight: 600;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      box-shadow: 0 4px 20px rgba(59,130,246,0.2);
+      margin-top: 8px;
+    }
+    .email-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(59,130,246,0.3);
+      color: #fff;
+    }
+
+    .alt-text {
+      margin-top: 20px;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+    .alt-text a { font-weight: 600; }
+
+    .footer {
+      border-top: 1px solid var(--border);
+      padding: 24px;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+    }
+    .footer a { color: var(--text-muted); text-decoration: none; margin: 0 12px; }
+    .footer a:hover { color: var(--text-secondary); }
+  </style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="https://feasai.app" class="nav-logo">
+    <div class="nav-logo-icon">F</div>
+    FeasAI
+  </a>
+  <a href="https://feasai.app" class="nav-back">← Home</a>
+</nav>
+
+<main class="main">
+  <div class="icon-circle">📋</div>
+  <h1>Delete Your Data</h1>
+  <p class="subtitle">Request deletion of specific data from your FeasAI account without deleting your entire account.</p>
+
+  <div class="info-card">
+    <p><strong>ℹ Your account stays active.</strong> You can request deletion of specific studies, reports, or chat history while keeping your account and remaining data intact.</p>
+  </div>
+
+  <div class="card">
+    <h2>What data can be deleted</h2>
+    <ul>
+      <li><strong>Individual studies</strong> — project inputs, generated report, and scores</li>
+      <li><strong>AI chat history</strong> — follow-up conversations within a study</li>
+      <li><strong>All studies at once</strong> — remove every study while keeping your account</li>
+      <li><strong>Profile preferences</strong> — reset your language, currency, and theme choices</li>
+    </ul>
+  </div>
+
+  <div class="card steps-card">
+    <h2>How to delete your data</h2>
+
+    <div class="step-item">
+      <div class="step-num">1</div>
+      <div class="step-text"><strong>In-app (recommended):</strong> Open any study → tap the menu (⋮) → select "Delete Study" → confirm. This instantly and permanently removes that study and all related data.</div>
+    </div>
+
+    <div class="step-item">
+      <div class="step-num">2</div>
+      <div class="step-text"><strong>Via email:</strong> If you need help deleting specific data or cannot access the app, send us a request using the button below. Describe which data you'd like deleted and include your account email.</div>
+    </div>
+  </div>
+
+  <p>We will process email requests within <strong>30 days</strong>. You will receive a confirmation email once deletion is complete.</p>
+
+  <a href="mailto:level7techs@gmail.com?subject=Data%20Deletion%20Request%20-%20FeasAI&body=Hi%20FeasAI%20Team%2C%0A%0AI%20would%20like%20to%20request%20the%20deletion%20of%20the%20following%20data%20from%20my%20FeasAI%20account%3A%0A%0A-%20%5BDescribe%20what%20you%20want%20deleted%2C%20e.g.%20%22all%20studies%22%20or%20%22study%20named%20XYZ%22%5D%0A%0AMy%20account%20email%3A%20%5Benter%20your%20email%20here%5D%0A%0AThank%20you." class="email-btn">
+    ✉ &nbsp;Request Data Deletion
+  </a>
+
+  <p class="alt-text">Or email us directly at <a href="mailto:level7techs@gmail.com">level7techs@gmail.com</a></p>
+
+  <div class="card" style="margin-top: 36px; border-left: 3px solid rgba(248,113,113,0.4);">
+    <h2>Want to delete everything?</h2>
+    <p>If you'd like to permanently delete your entire account and all associated data, visit our <a href="https://l7techs.github.io/FeasAi/delete_account.html">account deletion page</a> instead.</p>
+  </div>
+</main>
+
+<footer class="footer">
+  <div>
+    <a href="https://l7techs.github.io/FeasAi/privacy_policy.html">Privacy Policy</a>
+    <a href="mailto:level7techs@gmail.com">Contact</a>
+  </div>
+  <p style="margin-top: 8px;">&copy; 2026 FeasAI. All rights reserved.</p>
+</footer>
+
+</body>
+</html>
