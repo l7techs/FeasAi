@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Terms of Service — FeasAI</title>
+  <meta name="description" content="FeasAI Terms of Service — Rules and guidelines for using our AI-powered feasibility study platform." />
+  <meta name="theme-color" content="#0F172A" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg-deep: #0F172A;
+      --bg-card: #1E293B;
+      --bg-surface: #334155;
+      --primary: #3B82F6;
+      --primary-deep: #1A56DB;
+      --secondary: #14B8A6;
+      --accent: #F59E0B;
+      --error: #F87171;
+      --text-primary: #F1F5F9;
+      --text-secondary: #94A3B8;
+      --text-muted: #64748B;
+      --border: rgba(255,255,255,0.06);
+      --border-strong: rgba(255,255,255,0.1);
+      --radius: 16px;
+      --radius-sm: 10px;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'DM Sans', system-ui, -apple-system, sans-serif;
+      background: var(--bg-deep);
+      color: var(--text-secondary);
+      line-height: 1.75;
+      -webkit-font-smoothing: antialiased;
+      font-size: 15px;
+    }
+
+    /* Nav */
+    .nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 16px 0;
+      background: rgba(15,23,42,0.88);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-inner {
+      max-width: 820px;
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-logo {
+      font-size: 1.25rem;
+      font-weight: 700;
+      text-decoration: none;
+      color: var(--text-primary);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .nav-logo-icon {
+      width: 34px; height: 34px;
+      border-radius: 9px;
+      background: linear-gradient(135deg, var(--primary-deep), var(--secondary));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+      font-weight: 800;
+      color: #fff;
+    }
+    .nav-back {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.88rem;
+      font-weight: 500;
+      transition: color 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .nav-back:hover { color: var(--primary); }
+
+    /* Hero */
+    .hero {
+      padding: 140px 24px 60px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -40%; left: -20%;
+      width: 600px; height: 600px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(20,184,166,0.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 16px;
+      border-radius: 100px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      border: 1px solid var(--border-strong);
+      background: rgba(20,184,166,0.06);
+      color: var(--secondary);
+      margin-bottom: 20px;
+    }
+    .hero h1 {
+      font-family: 'Instrument Serif', Georgia, serif;
+      font-size: clamp(2.2rem, 5vw, 3.2rem);
+      font-weight: 400;
+      font-style: italic;
+      color: var(--text-primary);
+      line-height: 1.2;
+      margin-bottom: 12px;
+    }
+    .hero p {
+      font-size: 1rem;
+      color: var(--text-muted);
+      max-width: 480px;
+      margin: 0 auto;
+    }
+
+    /* TOC */
+    .toc-wrapper {
+      max-width: 820px;
+      margin: 0 auto;
+      padding: 0 24px 48px;
+    }
+    .toc {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px 32px;
+    }
+    .toc-title {
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--secondary);
+      margin-bottom: 16px;
+    }
+    .toc-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6px 32px;
+    }
+    .toc a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: 0.9rem;
+      padding: 6px 0;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: color 0.2s;
+    }
+    .toc a:hover { color: var(--secondary); }
+    .toc-num {
+      font-weight: 700;
+      color: var(--text-muted);
+      font-size: 0.78rem;
+      min-width: 22px;
+    }
+
+    /* Content */
+    .content {
+      max-width: 820px;
+      margin: 0 auto;
+      padding: 0 24px 80px;
+    }
+    .section {
+      margin-bottom: 56px;
+      scroll-margin-top: 90px;
+    }
+    .section-number {
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--secondary);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .section-number::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(90deg, rgba(20,184,166,0.3), transparent);
+    }
+    h2 {
+      font-size: 1.55rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 20px;
+      line-height: 1.3;
+    }
+    h3 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-top: 28px;
+      margin-bottom: 12px;
+    }
+    p { margin-bottom: 14px; }
+    ul, ol { margin: 12px 0 16px 20px; }
+    li { margin-bottom: 8px; padding-left: 4px; }
+    li::marker { color: var(--text-muted); }
+    strong { color: var(--text-primary); font-weight: 600; }
+    a { color: var(--secondary); text-decoration: none; transition: color 0.2s; }
+    a:hover { color: var(--primary); }
+
+    /* Cards */
+    .info-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 20px 24px;
+      margin: 20px 0;
+    }
+    .info-card.warning {
+      border-left: 3px solid var(--accent);
+      background: rgba(245,158,11,0.04);
+    }
+    .info-card.teal {
+      border-left: 3px solid var(--secondary);
+    }
+    .info-card.red {
+      border-left: 3px solid var(--error);
+      background: rgba(248,113,113,0.04);
+    }
+    .info-card p:last-child { margin-bottom: 0; }
+
+    /* Contact Card */
+    .contact-card {
+      background: linear-gradient(135deg, rgba(20,184,166,0.06), rgba(59,130,246,0.06));
+      border: 1px solid var(--border-strong);
+      border-radius: var(--radius);
+      padding: 32px;
+      text-align: center;
+      margin-top: 32px;
+    }
+    .contact-card h3 { margin-top: 0; font-size: 1.2rem; }
+    .contact-email {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 24px;
+      border-radius: var(--radius-sm);
+      background: rgba(20,184,166,0.1);
+      border: 1px solid rgba(20,184,166,0.2);
+      color: var(--secondary);
+      font-weight: 600;
+      font-size: 1rem;
+      margin-top: 8px;
+      transition: all 0.2s;
+    }
+    .contact-email:hover {
+      background: rgba(20,184,166,0.15);
+      border-color: var(--secondary);
+    }
+
+    /* Footer */
+    .footer {
+      border-top: 1px solid var(--border);
+      padding: 32px 24px;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+    }
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      margin-bottom: 12px;
+    }
+    .footer-links a { color: var(--text-muted); font-weight: 500; }
+    .footer-links a:hover { color: var(--text-secondary); }
+
+    /* Responsive */
+    @media (max-width: 600px) {
+      .toc-grid { grid-template-columns: 1fr; }
+      .toc { padding: 20px; }
+      .contact-card { padding: 24px 20px; }
+    }
+
+    /* Animation */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(16px);
+      animation: fadeIn 0.5s ease forwards;
+    }
+    @keyframes fadeIn {
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="https://feasai.app" class="nav-logo">
+      <div class="nav-logo-icon">F</div>
+      FeasAI
+    </a>
+    <a href="https://feasai.app" class="nav-back">&larr; Back to Home</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero fade-in">
+  <div class="hero-badge">Legal</div>
+  <h1>Terms of Service</h1>
+  <p>Effective March 8, 2026 &middot; Last updated March 8, 2026</p>
+</header>
+
+<!-- TOC -->
+<div class="toc-wrapper fade-in">
+  <div class="toc">
+    <div class="toc-title">Table of Contents</div>
+    <div class="toc-grid">
+      <a href="#s1"><span class="toc-num">01</span> Acceptance of Terms</a>
+      <a href="#s9"><span class="toc-num">09</span> Limitation of Liability</a>
+      <a href="#s2"><span class="toc-num">02</span> Description of Service</a>
+      <a href="#s10"><span class="toc-num">10</span> Indemnification</a>
+      <a href="#s3"><span class="toc-num">03</span> Account Registration</a>
+      <a href="#s11"><span class="toc-num">11</span> Termination</a>
+      <a href="#s4"><span class="toc-num">04</span> AI Disclaimer</a>
+      <a href="#s12"><span class="toc-num">12</span> Governing Law</a>
+      <a href="#s5"><span class="toc-num">05</span> Acceptable Use</a>
+      <a href="#s13"><span class="toc-num">13</span> Severability</a>
+      <a href="#s6"><span class="toc-num">06</span> Subscription Terms</a>
+      <a href="#s14"><span class="toc-num">14</span> Entire Agreement</a>
+      <a href="#s7"><span class="toc-num">07</span> Refund Policy</a>
+      <a href="#s15"><span class="toc-num">15</span> Contact Us</a>
+      <a href="#s8"><span class="toc-num">08</span> Intellectual Property</a>
+    </div>
+  </div>
+</div>
+
+<!-- CONTENT -->
+<main class="content">
+
+  <!-- 1 -->
+  <div class="section" id="s1">
+    <div class="section-number">Section 01</div>
+    <h2>Acceptance of Terms</h2>
+    <p>By creating an account, accessing, or using the FeasAI mobile application, web application, or any associated services (collectively, the "Service"), you agree to be bound by these Terms of Service ("Terms"). If you do not agree to these Terms, do not use the Service.</p>
+    <p>We may update these Terms from time to time. We will notify you of material changes by posting the updated Terms within the app and updating the "Last Updated" date. Your continued use of the Service after changes are posted constitutes acceptance of the revised Terms.</p>
+  </div>
+
+  <!-- 2 -->
+  <div class="section" id="s2">
+    <div class="section-number">Section 02</div>
+    <h2>Description of the Service</h2>
+    <p>FeasAI is an AI-powered application that generates feasibility study reports based on user-provided project and business inputs. The Service includes features such as guided data input wizards, AI-generated analysis reports, interactive charts, project comparison tools, an AI chat assistant, PDF export, industry templates, and subscription management.</p>
+  </div>
+
+  <!-- 3 -->
+  <div class="section" id="s3">
+    <div class="section-number">Section 03</div>
+    <h2>Account Registration</h2>
+
+    <h3>3.1 Eligibility</h3>
+    <p>You must be at least 13 years old (or the applicable age of digital consent in your jurisdiction) to use the Service. By using the Service, you represent that you meet this requirement.</p>
+
+    <h3>3.2 Account Security</h3>
+    <p>You are responsible for maintaining the confidentiality of your account credentials and for all activity that occurs under your account. You agree to notify us immediately at <a href="mailto:level7techs@gmail.com">level7techs@gmail.com</a> if you suspect unauthorized use of your account.</p>
+
+    <h3>3.3 Accuracy</h3>
+    <p>You agree to provide accurate, current, and complete information during registration and to keep your account information up to date.</p>
+  </div>
+
+  <!-- 4 -->
+  <div class="section" id="s4">
+    <div class="section-number">Section 04</div>
+    <h2>AI Disclaimer &mdash; Not Professional Advice</h2>
+
+    <div class="info-card red">
+      <p><strong>This is critically important: FeasAI is a decision-support tool, not a substitute for professional advice.</strong></p>
+    </div>
+
+    <ul>
+      <li>The feasibility reports, scores, financial projections, risk assessments, market analyses, and recommendations generated by FeasAI are produced by artificial intelligence based on the data you provide and general analytical models.</li>
+      <li>AI-generated content may contain errors, inaccuracies, or incomplete information. AI models can produce outputs that appear confident but are factually incorrect.</li>
+      <li>FeasAI does <strong>not</strong> provide professional financial advice, investment advice, legal counsel, tax advice, accounting services, or business consulting services.</li>
+      <li>You should <strong>not</strong> make significant business, financial, legal, or investment decisions based solely on FeasAI reports. Always consult qualified professionals (accountants, lawyers, financial advisors, business consultants) before making material decisions.</li>
+      <li>We make <strong>no representations or warranties</strong> regarding the accuracy, completeness, reliability, or suitability of any AI-generated content for any particular purpose.</li>
+      <li>Past performance, projections, and scenarios presented in reports are hypothetical and are not guarantees of future results.</li>
+    </ul>
+
+    <p>By using the Service, you acknowledge and accept these limitations.</p>
+  </div>
+
+  <!-- 5 -->
+  <div class="section" id="s5">
+    <div class="section-number">Section 05</div>
+    <h2>Acceptable Use</h2>
+    <p>You agree to use the Service only for lawful purposes and in accordance with these Terms. You agree <strong>not</strong> to:</p>
+    <ul>
+      <li>Use the Service for any illegal, fraudulent, or harmful purpose.</li>
+      <li>Submit false, misleading, or intentionally deceptive data with the intent to generate fraudulent reports for third parties.</li>
+      <li>Attempt to reverse-engineer, decompile, disassemble, or otherwise derive the source code of the application.</li>
+      <li>Attempt to gain unauthorized access to other users' accounts, data, or any part of our infrastructure.</li>
+      <li>Use automated scripts, bots, or scraping tools to access the Service or extract data at scale.</li>
+      <li>Resell, redistribute, or commercially exploit AI-generated reports as a competing feasibility study service without our prior written consent.</li>
+      <li>Interfere with or disrupt the Service, servers, or networks connected to the Service.</li>
+      <li>Upload or transmit viruses, malware, or other harmful code.</li>
+      <li>Violate the intellectual property rights of any third party through your use of the Service.</li>
+      <li>Use the Service to generate content that is defamatory, harassing, threatening, obscene, or otherwise objectionable.</li>
+    </ul>
+    <p>We reserve the right to suspend or terminate your account if you violate these terms.</p>
+  </div>
+
+  <!-- 6 -->
+  <div class="section" id="s6">
+    <div class="section-number">Section 06</div>
+    <h2>Subscription Terms</h2>
+
+    <h3>6.1 Plans</h3>
+    <p>The Service offers tiered subscription plans: <strong>Free</strong>, <strong>Pro</strong>, and <strong>Team</strong>. Features and limits for each tier are described within the app and on our website. We reserve the right to modify plan features, limits, and pricing with reasonable notice.</p>
+
+    <h3>6.2 Billing</h3>
+    <p>Paid subscriptions (Pro and Team) are billed on a monthly recurring basis through the Apple App Store, Google Play Store, or other supported payment platforms. By subscribing, you authorize the applicable platform to charge your selected payment method.</p>
+
+    <h3>6.3 Free Trial</h3>
+    <p>We may offer free trial periods for paid plans. If you do not cancel before the trial ends, your subscription will automatically convert to a paid subscription at the stated price.</p>
+
+    <h3>6.4 Automatic Renewal</h3>
+    <p>Paid subscriptions automatically renew at the end of each billing period unless you cancel before the renewal date. You can manage or cancel your subscription through your device's app store settings.</p>
+
+    <h3>6.5 Price Changes</h3>
+    <p>We may change subscription prices with at least 30 days' notice. Price changes take effect at the start of your next billing cycle after the notice period.</p>
+  </div>
+
+  <!-- 7 -->
+  <div class="section" id="s7">
+    <div class="section-number">Section 07</div>
+    <h2>Refund Policy</h2>
+
+    <h3>7.1 App Store Purchases</h3>
+    <p>Refunds for subscriptions purchased through the Apple App Store or Google Play Store are governed by the respective store's refund policies:</p>
+    <ul>
+      <li><strong>Apple App Store:</strong> Request refunds at <a href="https://reportaproblem.apple.com" target="_blank" rel="noopener">reportaproblem.apple.com</a>.</li>
+      <li><strong>Google Play Store:</strong> Request refunds through the Google Play Store or at <a href="https://support.google.com/googleplay" target="_blank" rel="noopener">support.google.com/googleplay</a>.</li>
+    </ul>
+
+    <h3>7.2 Our Policy</h3>
+    <p>We do not process refunds directly for app store purchases. If you experience a technical issue that prevents you from using a paid feature, please contact us at <a href="mailto:level7techs@gmail.com">level7techs@gmail.com</a> and we will work to resolve the issue or provide appropriate credit at our discretion.</p>
+
+    <h3>7.3 Cancellation</h3>
+    <p>When you cancel a paid subscription, you retain access to paid features until the end of the current billing period. After that, your account reverts to the Free tier. Previously generated reports remain accessible on the Free tier, but Free tier limits apply to new usage.</p>
+  </div>
+
+  <!-- 8 -->
+  <div class="section" id="s8">
+    <div class="section-number">Section 08</div>
+    <h2>Intellectual Property</h2>
+
+    <h3>8.1 Our Intellectual Property</h3>
+    <p>The Service, including its design, code, user interface, branding, graphics, and documentation, is owned by FeasAI and is protected by intellectual property laws. You may not copy, modify, distribute, or create derivative works based on the Service without our prior written consent.</p>
+
+    <h3>8.2 Your Content</h3>
+    <p>You retain ownership of the project data and inputs you provide to the Service. By using the Service, you grant us a limited, non-exclusive license to process, store, and transmit your data solely for the purpose of providing the Service to you.</p>
+
+    <h3>8.3 AI-Generated Reports</h3>
+    <div class="info-card teal">
+      <p>You may use, share, modify, and distribute the AI-generated feasibility reports for your own personal or commercial purposes (e.g., including them in investor presentations, business plans, or academic work). However, the AI-generated content is provided "as is" &mdash; see the AI Disclaimer in <a href="#s4">Section 4</a>.</p>
+    </div>
+  </div>
+
+  <!-- 9 -->
+  <div class="section" id="s9">
+    <div class="section-number">Section 09</div>
+    <h2>Limitation of Liability</h2>
+
+    <div class="info-card warning">
+      <p><strong>To the maximum extent permitted by applicable law:</strong></p>
+    </div>
+
+    <ul>
+      <li>The Service is provided on an "AS IS" and "AS AVAILABLE" basis without warranties of any kind, whether express, implied, statutory, or otherwise, including implied warranties of merchantability, fitness for a particular purpose, and non-infringement.</li>
+      <li>We do <strong>not</strong> warrant that the Service will be uninterrupted, error-free, secure, or free of harmful components.</li>
+      <li>We do <strong>not</strong> warrant the accuracy, completeness, or reliability of any AI-generated content, including feasibility scores, financial projections, risk assessments, or recommendations.</li>
+      <li>In no event shall FeasAI, its owners, employees, or affiliates be liable for any indirect, incidental, special, consequential, or punitive damages, including but not limited to loss of profits, revenue, data, business opportunities, or goodwill, arising out of or related to your use of the Service.</li>
+      <li>Our total aggregate liability for any claims arising out of or related to these Terms or the Service shall not exceed the greater of (a) the amount you paid to us in the 12 months preceding the claim, or (b) $100 USD.</li>
+    </ul>
+  </div>
+
+  <!-- 10 -->
+  <div class="section" id="s10">
+    <div class="section-number">Section 10</div>
+    <h2>Indemnification</h2>
+    <p>You agree to indemnify, defend, and hold harmless FeasAI, its owners, employees, and affiliates from and against any claims, liabilities, damages, losses, and expenses (including reasonable attorney's fees) arising out of or related to: (a) your use of the Service; (b) your violation of these Terms; (c) your violation of any third-party rights; or (d) any content or data you submit through the Service.</p>
+  </div>
+
+  <!-- 11 -->
+  <div class="section" id="s11">
+    <div class="section-number">Section 11</div>
+    <h2>Termination</h2>
+
+    <h3>11.1 By You</h3>
+    <p>You may delete your account at any time from the Settings screen within the app. Deleting your account permanently removes all associated data.</p>
+
+    <h3>11.2 By Us</h3>
+    <p>We may suspend or terminate your account at any time if we determine, at our sole discretion, that you have violated these Terms or that your use poses a risk to the Service, other users, or our infrastructure. We will attempt to provide notice where practicable.</p>
+
+    <h3>11.3 Effect of Termination</h3>
+    <p>Upon termination, your right to use the Service ceases immediately. Sections that by their nature should survive termination (including Sections 4, 8, 9, 10, and 12) will survive.</p>
+  </div>
+
+  <!-- 12 -->
+  <div class="section" id="s12">
+    <div class="section-number">Section 12</div>
+    <h2>Governing Law &amp; Dispute Resolution</h2>
+    <p>These Terms are governed by and construed in accordance with the laws of the State of Qatar, without regard to conflict-of-law principles. Any disputes arising out of or related to these Terms or the Service shall be resolved through binding arbitration in the State of Qatar, except where prohibited by law.</p>
+  </div>
+
+  <!-- 13 -->
+  <div class="section" id="s13">
+    <div class="section-number">Section 13</div>
+    <h2>Severability</h2>
+    <p>If any provision of these Terms is found to be invalid or unenforceable, that provision will be enforced to the maximum extent permissible, and the remaining provisions will remain in full force and effect.</p>
+  </div>
+
+  <!-- 14 -->
+  <div class="section" id="s14">
+    <div class="section-number">Section 14</div>
+    <h2>Entire Agreement</h2>
+    <p>These Terms, together with our <a href="https://l7techs.github.io/FeasAi/privacy_policy.html">Privacy Policy</a>, constitute the entire agreement between you and FeasAI regarding the Service and supersede all prior agreements and understandings.</p>
+  </div>
+
+  <!-- 15 -->
+  <div class="section" id="s15">
+    <div class="section-number">Section 15</div>
+    <h2>Contact Us</h2>
+    <p>If you have questions about these Terms, please contact us:</p>
+
+    <div class="contact-card">
+      <h3>Get in Touch</h3>
+      <p style="color: var(--text-secondary); margin-bottom: 16px;">We're here to help with any questions about these Terms.</p>
+      <a href="mailto:level7techs@gmail.com" class="contact-email">
+        &#9993; &nbsp;level7techs@gmail.com
+      </a>
+    </div>
+  </div>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-links">
+    <a href="https://feasai.app">Home</a>
+    <a href="https://l7techs.github.io/FeasAi/privacy_policy.html">Privacy Policy</a>
+    <a href="mailto:level7techs@gmail.com">Contact</a>
+  </div>
+  <p style="margin-top: 8px;">&copy; 2026 FeasAI. All rights reserved.</p>
+</footer>
+
+</body>
+</html>
