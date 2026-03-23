@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>سياسة الخصوصية — FeasAI</title>
+  <meta name="description" content="سياسة خصوصية FeasAI — تعرّف على كيفية جمع بياناتك واستخدامها وحمايتها." />
+  <meta name="theme-color" content="#0F172A" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg-deep: #0F172A;
+      --bg-card: #1E293B;
+      --bg-surface: #334155;
+      --primary: #3B82F6;
+      --primary-deep: #1A56DB;
+      --secondary: #14B8A6;
+      --accent: #F59E0B;
+      --text-primary: #F1F5F9;
+      --text-secondary: #94A3B8;
+      --text-muted: #64748B;
+      --border: rgba(255,255,255,0.06);
+      --border-strong: rgba(255,255,255,0.1);
+      --radius: 16px;
+      --radius-sm: 10px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'IBM Plex Sans Arabic', system-ui, -apple-system, sans-serif;
+      background: var(--bg-deep);
+      color: var(--text-secondary);
+      line-height: 1.9;
+      -webkit-font-smoothing: antialiased;
+      font-size: 15px;
+    }
+
+    /* ─── Navigation ─────────────────────────────────── */
+    .nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 16px 0;
+      background: rgba(15,23,42,0.88);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-inner {
+      max-width: 820px;
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-logo {
+      font-size: 1.25rem;
+      font-weight: 700;
+      text-decoration: none;
+      color: var(--text-primary);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .nav-logo-icon {
+      width: 34px; height: 34px;
+      border-radius: 9px;
+      background: linear-gradient(135deg, var(--primary-deep), var(--secondary));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+      font-weight: 800;
+      color: #fff;
+    }
+
+    .nav-back {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.88rem;
+      font-weight: 500;
+      transition: color 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .nav-back:hover { color: var(--primary); }
+
+    /* ─── Hero ───────────────────────────────────────── */
+    .hero {
+      padding: 140px 24px 60px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -40%; left: -20%;
+      width: 600px; height: 600px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(59,130,246,0.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 16px;
+      border-radius: 100px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      border: 1px solid var(--border-strong);
+      background: rgba(59,130,246,0.06);
+      color: var(--primary);
+      margin-bottom: 20px;
+    }
+
+    .hero h1 {
+      font-family: 'IBM Plex Sans Arabic', system-ui, sans-serif;
+      font-size: clamp(2.2rem, 5vw, 3.2rem);
+      font-weight: 700;
+      color: var(--text-primary);
+      line-height: 1.3;
+      margin-bottom: 12px;
+    }
+
+    .hero p {
+      font-size: 1rem;
+      color: var(--text-muted);
+      max-width: 480px;
+      margin: 0 auto;
+    }
+
+    /* ─── Table of Contents ──────────────────────────── */
+    .toc-wrapper {
+      max-width: 820px;
+      margin: 0 auto;
+      padding: 0 24px 48px;
+    }
+
+    .toc {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px 32px;
+    }
+
+    .toc-title {
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--secondary);
+      margin-bottom: 16px;
+    }
+
+    .toc-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6px 32px;
+    }
+
+    .toc a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: 0.9rem;
+      padding: 6px 0;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: color 0.2s;
+    }
+    .toc a:hover { color: var(--primary); }
+
+    .toc-num {
+      font-weight: 700;
+      color: var(--text-muted);
+      font-size: 0.78rem;
+      min-width: 22px;
+      font-family: 'IBM Plex Sans Arabic', monospace;
+      direction: ltr;
+    }
+
+    /* ─── Content ────────────────────────────────────── */
+    .content {
+      max-width: 820px;
+      margin: 0 auto;
+      padding: 0 24px 80px;
+    }
+
+    .section {
+      margin-bottom: 56px;
+      scroll-margin-top: 90px;
+    }
+
+    .section-number {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 8px;
+      direction: rtl;
+    }
+
+    .section-number::before {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(270deg, rgba(59,130,246,0.3), transparent);
+    }
+
+    h2 {
+      font-size: 1.55rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 20px;
+      line-height: 1.4;
+    }
+
+    h3 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-top: 28px;
+      margin-bottom: 12px;
+    }
+
+    p { margin-bottom: 14px; }
+
+    ul, ol {
+      margin: 12px 0 16px 0;
+      padding-right: 20px;
+      padding-left: 0;
+    }
+
+    li {
+      margin-bottom: 8px;
+      padding-right: 4px;
+    }
+
+    li::marker { color: var(--text-muted); }
+
+    strong { color: var(--text-primary); font-weight: 600; }
+
+    a { color: var(--primary); text-decoration: none; transition: color 0.2s; }
+    a:hover { color: var(--secondary); }
+
+    /* ─── Info Card ──────────────────────────────────── */
+    .info-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 20px 24px;
+      margin: 20px 0;
+    }
+
+    .info-card.highlight {
+      border-right: 3px solid var(--accent);
+      border-left: none;
+    }
+
+    .info-card.blue {
+      border-right: 3px solid var(--primary);
+      border-left: none;
+    }
+
+    .info-card p:last-child { margin-bottom: 0; }
+
+    /* ─── Data Table ─────────────────────────────────── */
+    .data-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 16px 0 20px;
+      font-size: 0.9rem;
+    }
+
+    .data-table th,
+    .data-table td {
+      text-align: right;
+      padding: 12px 16px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .data-table th {
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      color: var(--text-muted);
+      background: rgba(255,255,255,0.02);
+    }
+
+    .data-table td { color: var(--text-secondary); }
+
+    .data-table a { font-weight: 500; }
+
+    .table-scroll {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+    }
+
+    .table-scroll .data-table { margin: 0; }
+    .table-scroll .data-table th:last-child,
+    .table-scroll .data-table td:last-child { white-space: nowrap; }
+
+    /* ─── Contact Card ───────────────────────────────── */
+    .contact-card {
+      background: linear-gradient(135deg, rgba(59,130,246,0.06), rgba(20,184,166,0.06));
+      border: 1px solid var(--border-strong);
+      border-radius: var(--radius);
+      padding: 32px;
+      text-align: center;
+      margin-top: 32px;
+    }
+
+    .contact-card h3 {
+      margin-top: 0;
+      font-size: 1.2rem;
+    }
+
+    .contact-email {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 24px;
+      border-radius: var(--radius-sm);
+      background: rgba(59,130,246,0.1);
+      border: 1px solid rgba(59,130,246,0.2);
+      color: var(--primary);
+      font-weight: 600;
+      font-size: 1rem;
+      margin-top: 8px;
+      transition: all 0.2s;
+      direction: ltr;
+    }
+
+    .contact-email:hover {
+      background: rgba(59,130,246,0.15);
+      border-color: var(--primary);
+    }
+
+    /* ─── Footer ─────────────────────────────────────── */
+    .footer {
+      border-top: 1px solid var(--border);
+      padding: 32px 24px;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      margin-bottom: 12px;
+    }
+
+    .footer-links a {
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+    .footer-links a:hover { color: var(--text-secondary); }
+
+    /* ─── Responsive ─────────────────────────────────── */
+    @media (max-width: 600px) {
+      .toc-grid { grid-template-columns: 1fr; }
+      .toc { padding: 20px; }
+      .data-table th, .data-table td { padding: 10px 12px; font-size: 0.83rem; }
+      .contact-card { padding: 24px 20px; }
+    }
+
+    /* ─── Entrance Animation ─────────────────────────── */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(16px);
+      animation: fadeIn 0.5s ease forwards;
+    }
+
+    @keyframes fadeIn {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .section:nth-child(2) { animation-delay: 0.05s; }
+    .section:nth-child(3) { animation-delay: 0.1s; }
+  </style>
+</head>
+<body>
+
+<!-- ═══ NAV ═══ -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="https://l7techs.github.io/FeasAi/" class="nav-logo">
+      <img src="logo_144.png" class="nav-logo-icon" alt="شعار FeasAI" />
+      FeasAI
+    </a>
+    <a href="https://l7techs.github.io/FeasAi/" class="nav-back">→ العودة للرئيسية</a>
+  </div>
+</nav>
+
+<!-- ═══ HERO ═══ -->
+<header class="hero fade-in">
+  <div class="hero-badge">قانوني</div>
+  <h1>سياسة الخصوصية</h1>
+  <p>سارية المفعول منذ ٨ مارس ٢٠٢٦ &middot; آخر تحديث ٨ مارس ٢٠٢٦</p>
+</header>
+
+<!-- ═══ TABLE OF CONTENTS ═══ -->
+<div class="toc-wrapper fade-in">
+  <div class="toc">
+    <div class="toc-title">فهرس المحتويات</div>
+    <div class="toc-grid">
+      <a href="#s1"><span class="toc-num">٠١</span> المقدمة</a>
+      <a href="#s7"><span class="toc-num">٠٧</span> حقوقك</a>
+      <a href="#s2"><span class="toc-num">٠٢</span> المعلومات التي نجمعها</a>
+      <a href="#s8"><span class="toc-num">٠٨</span> الاحتفاظ بالبيانات</a>
+      <a href="#s3"><span class="toc-num">٠٣</span> كيفية استخدام معلوماتك</a>
+      <a href="#s9"><span class="toc-num">٠٩</span> خصوصية الأطفال</a>
+      <a href="#s4"><span class="toc-num">٠٤</span> معالجة البيانات بالذكاء الاصطناعي</a>
+      <a href="#s10"><span class="toc-num">١٠</span> النقل الدولي للبيانات</a>
+      <a href="#s5"><span class="toc-num">٠٥</span> خدمات الطرف الثالث</a>
+      <a href="#s11"><span class="toc-num">١١</span> التغييرات على هذه السياسة</a>
+      <a href="#s6"><span class="toc-num">٠٦</span> تخزين البيانات والأمان</a>
+      <a href="#s12"><span class="toc-num">١٢</span> تواصل معنا</a>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ CONTENT ═══ -->
+<main class="content">
+
+  <!-- 1 ─ المقدمة -->
+  <div class="section" id="s1">
+    <div class="section-number">القسم ٠١</div>
+    <h2>المقدمة</h2>
+    <p>مرحبًا بك في FeasAI ("نحن" أو "لنا" أو "الخاصة بنا"). توضح سياسة الخصوصية هذه كيفية جمع معلوماتك واستخدامها والإفصاح عنها وحمايتها عند استخدامك تطبيق FeasAI للجوّال والتطبيق على الويب (يُشار إليهما مجتمعَيْن بـ "الخدمة").</p>
+    <p>باستخدامك الخدمة أو الوصول إليها، فإنك توافق على هذه السياسة. إذا كنت لا توافق على شروطها، فيُرجى عدم استخدام الخدمة أو الوصول إليها.</p>
+  </div>
+
+  <!-- 2 ─ المعلومات التي نجمعها -->
+  <div class="section" id="s2">
+    <div class="section-number">القسم ٠٢</div>
+    <h2>المعلومات التي نجمعها</h2>
+
+    <h3>٢.١ معلومات الحساب</h3>
+    <p>عند إنشاء حساب، نجمع:</p>
+    <ul>
+      <li><strong>الاسم الكامل</strong> — المقدَّم أثناء التسجيل أو المستخرَج من ملف تعريف حساب Google أو Apple.</li>
+      <li><strong>عنوان البريد الإلكتروني</strong> — يُستخدم للمصادقة واستعادة الحساب والاتصالات المعاملاتية.</li>
+      <li><strong>معرّفات المصادقة</strong> — معرّفات مستخدم فريدة تُولَّد بواسطة نظام المصادقة لدينا.</li>
+      <li><strong>تفضيلات الملف الشخصي</strong> — كاللغة المفضلة والعملة والسمة (داكنة/فاتحة).</li>
+    </ul>
+
+    <h3>٢.٢ بيانات المشاريع والتقارير</h3>
+    <p>عند استخدامك الخدمة لإنشاء دراسات الجدوى، نجمع:</p>
+    <ul>
+      <li><strong>مدخلات المشروع</strong> — اسم المشروع التجاري، والقطاع، والدولة، والمعاملات المالية (مبلغ الاستثمار، والإيرادات المتوقعة، والتكاليف المتوقعة)، وتفاصيل السوق، والمعاملات التشغيلية، والاعتبارات القانونية، وتفضيلات التحليل.</li>
+      <li><strong>التقارير المولَّدة</strong> — نتائج تحليل الجدوى المُنشأ بالذكاء الاصطناعي، بما فيها الدرجات والسرديات والتوقعات المالية وتقييمات المخاطر والتوصيات.</li>
+      <li><strong>رسائل المحادثة</strong> — الرسائل التي ترسلها إلى مساعد الدردشة الذكي في سياق دراسة معينة، وردود الذكاء الاصطناعي عليها.</li>
+    </ul>
+
+    <h3>٢.٣ بيانات الاشتراك والدفع</h3>
+    <ul>
+      <li><strong>مستوى الاشتراك وحالته</strong> — الخطة المجانية أو Pro أو Team وما إذا كان الاشتراك نشطًا.</li>
+      <li><strong>مزوّد الدفع ومعرّفات المعاملات</strong> — نتلقى مراجع المعاملات من RevenueCat (خدمة إدارة الاشتراكات لدينا) ومتاجر التطبيقات المعنية. نحن <strong>لا</strong> نجمع أرقام بطاقات الائتمان أو تفاصيل الحسابات المصرفية أو أي أدوات دفع مالية أخرى ولا نخزّنها مباشرةً.</li>
+    </ul>
+
+    <h3>٢.٤ بيانات الاستخدام والتشخيص</h3>
+    <ul>
+      <li><strong>أنماط استخدام الميزات</strong> — مثل عدد الدراسات المنشأة، والصفحات التي تمت زيارتها، والميزات المستخدمة.</li>
+      <li><strong>معلومات الجهاز</strong> — نوع الجهاز، وإصدار نظام التشغيل، وإصدار التطبيق، وإعدادات اللغة.</li>
+      <li><strong>سجلات الأعطال وتقارير الأخطاء</strong> — بيانات تقنية تساعدنا على تحديد المشكلات وإصلاحها.</li>
+    </ul>
+
+    <h3>٢.٥ المعلومات التي لا نجمعها</h3>
+    <div class="info-card blue">
+      <p>لا نجمع البيانات الجغرافية الدقيقة، وجهات الاتصال، أو الصور، أو مقاطع الفيديو، أو سجل التصفح، أو البيانات الصحية، أو البيانات البيومترية.</p>
+    </div>
+  </div>
+
+  <!-- 3 ─ كيفية استخدام معلوماتك -->
+  <div class="section" id="s3">
+    <div class="section-number">القسم ٠٣</div>
+    <h2>كيفية استخدام معلوماتك</h2>
+    <p>نستخدم المعلومات التي نجمعها من أجل:</p>
+    <ul>
+      <li><strong>تقديم الخدمة</strong> — إنشاء دراسات الجدوى وتخزينها، وتوليد التقارير المدعومة بالذكاء الاصطناعي، وتمكين ميزات مثل مقارنة المشاريع والدردشة الذكية.</li>
+      <li><strong>معالجة التحليل بالذكاء الاصطناعي</strong> — إرسال مدخلات مشروعك إلى مزوّد الذكاء الاصطناعي لدينا (Anthropic) لتوليد تقارير الجدوى. راجع القسم ٤ للاطلاع على التفاصيل.</li>
+      <li><strong>إدارة حسابك</strong> — التحقق من هويتك، وإدارة حالة الاشتراك، وتطبيق تفضيلاتك.</li>
+      <li><strong>تحسين الخدمة</strong> — تحليل أنماط الاستخدام لإصلاح الأخطاء، وتحسين الأداء، وتطوير ميزات جديدة.</li>
+      <li><strong>التواصل معك</strong> — إرسال رسائل بريد إلكتروني معاملاتية تتعلق بحسابك (مثل إعادة تعيين كلمة المرور). لا نرسل رسائل تسويقية إلا بعد موافقتك.</li>
+      <li><strong>تطبيق شروطنا</strong> — رصد الانتهاكات، ومنع الاحتيال، وضمان الامتثال لشروط الخدمة.</li>
+    </ul>
+  </div>
+
+  <!-- 4 ─ معالجة البيانات بالذكاء الاصطناعي -->
+  <div class="section" id="s4">
+    <div class="section-number">القسم ٠٤</div>
+    <h2>كيف يعالج الذكاء الاصطناعي بياناتك</h2>
+    <p>يستخدم FeasAI <strong>Anthropic Claude API</strong> لتوليد تقارير دراسات الجدوى. عند إنشاء دراسة:</p>
+    <ol>
+      <li>يتم إرسال مدخلات مشروعك (تفاصيل العمل، والمعاملات المالية، ومعلومات السوق، وغير ذلك) إلى واجهة برمجة التطبيقات الخاصة بـ Anthropic عبر خادمنا الخلفي الآمن (Supabase Edge Functions).</li>
+      <li>تعالج Anthropic هذه المدخلات لتوليد محتوى تقرير الجدوى.</li>
+      <li>يُعاد التقرير المولَّد إلى خوادمنا ويُخزَّن في حسابك.</li>
+    </ol>
+
+    <div class="info-card highlight">
+      <p><strong>ملاحظات مهمة حول معالجة الذكاء الاصطناعي:</strong></p>
+      <ul>
+        <li>تُرسَل بيانات مشروعك إلى Anthropic حصرًا لغرض إنشاء تقرير الجدوى الخاص بك.</li>
+        <li>تسري سياسات استخدام بيانات Anthropic على البيانات التي تعالجها واجهة برمجة التطبيقات. اعتبارًا من تاريخ نفاذ هذه السياسة، تفيد Anthropic بأنها لا تستخدم مدخلات أو مخرجات واجهة برمجة التطبيقات لتدريب نماذجها. يُرجى الرجوع إلى <a href="https://www.anthropic.com/privacy" target="_blank" rel="noopener">سياسة خصوصية Anthropic</a> للاطلاع على شروطهم الحالية.</li>
+        <li>لا نرسل اسمك أو بريدك الإلكتروني أو أي معلومات تعريف شخصية أخرى إلى Anthropic — فقط بيانات المشروع اللازمة للتحليل.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 5 ─ خدمات الطرف الثالث -->
+  <div class="section" id="s5">
+    <div class="section-number">القسم ٠٥</div>
+    <h2>خدمات الطرف الثالث</h2>
+    <p>نستخدم خدمات الطرف الثالث التالية:</p>
+
+    <div class="table-scroll">
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>الخدمة</th>
+            <th>الغرض</th>
+            <th>البيانات المشتركة</th>
+            <th>سياسة الخصوصية</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Supabase</strong></td>
+            <td>المصادقة وقاعدة البيانات والوظائف السحابية والتخزين</td>
+            <td>بيانات الحساب، بيانات المشروع، التقارير</td>
+            <td><a href="https://supabase.com/privacy" target="_blank" rel="noopener">رابط</a></td>
+          </tr>
+          <tr>
+            <td><strong>Anthropic</strong></td>
+            <td>توليد التقارير بالذكاء الاصطناعي (Claude API)</td>
+            <td>مدخلات المشروع (مجهولة الهوية)</td>
+            <td><a href="https://www.anthropic.com/privacy" target="_blank" rel="noopener">رابط</a></td>
+          </tr>
+          <tr>
+            <td><strong>تسجيل الدخول بـ Google</strong></td>
+            <td>المصادقة</td>
+            <td>البريد الإلكتروني، الاسم (عبر OAuth)</td>
+            <td><a href="https://policies.google.com/privacy" target="_blank" rel="noopener">رابط</a></td>
+          </tr>
+          <tr>
+            <td><strong>تسجيل الدخول بـ Apple</strong></td>
+            <td>المصادقة</td>
+            <td>البريد الإلكتروني (قد يكون مخفيًا)، الاسم</td>
+            <td><a href="https://www.apple.com/privacy/" target="_blank" rel="noopener">رابط</a></td>
+          </tr>
+          <tr>
+            <td><strong>RevenueCat</strong></td>
+            <td>إدارة الاشتراكات</td>
+            <td>معرّف المستخدم المجهول في التطبيق، حالة الشراء</td>
+            <td><a href="https://www.revenuecat.com/privacy" target="_blank" rel="noopener">رابط</a></td>
+          </tr>
+          <tr>
+            <td><strong>متجر Google Play</strong></td>
+            <td>توزيع التطبيق والمدفوعات</td>
+            <td>بيانات الشراء</td>
+            <td><a href="https://policies.google.com/privacy" target="_blank" rel="noopener">رابط</a></td>
+          </tr>
+          <tr>
+            <td><strong>متجر Apple App Store</strong></td>
+            <td>توزيع التطبيق والمدفوعات</td>
+            <td>بيانات الشراء</td>
+            <td><a href="https://www.apple.com/privacy/" target="_blank" rel="noopener">رابط</a></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- 6 ─ تخزين البيانات والأمان -->
+  <div class="section" id="s6">
+    <div class="section-number">القسم ٠٦</div>
+    <h2>تخزين البيانات والأمان</h2>
+    <ul>
+      <li><strong>التخزين:</strong> تُخزَّن بياناتك في قواعد بيانات PostgreSQL المُدارة بواسطة Supabase مع سياسات أمان على مستوى الصف (RLS) التي تضمن أن كل مستخدم لا يمكنه الوصول إلا إلى بياناته الخاصة.</li>
+      <li><strong>التشفير:</strong> تُشفَّر البيانات أثناء النقل باستخدام TLS/SSL. كما تُشفِّر Supabase البيانات في وضع السكون.</li>
+      <li><strong>ضوابط الوصول:</strong> يفرض خادمنا الخلفي عمليات التحقق من المصادقة والصلاحيات على كل طلب. يقتصر وصول المسؤولين إلى بيانات الإنتاج ويُسجَّل بالكامل.</li>
+      <li><strong>البنية التحتية:</strong> تستضيف Supabase بنيتها التحتية على مزوّدي خدمات سحابية ملتزمين بمعيار SOC 2. يُرجى الرجوع إلى وثائق أمان Supabase للمزيد من التفاصيل.</li>
+    </ul>
+    <div class="info-card">
+      <p>رغم تطبيقنا تدابير أمان وفق معايير الصناعة، لا توجد طريقة نقل عبر الإنترنت أو أسلوب تخزين إلكتروني آمن بنسبة 100%. لا يمكننا ضمان الأمان المطلق.</p>
+    </div>
+  </div>
+
+  <!-- 7 ─ حقوقك -->
+  <div class="section" id="s7">
+    <div class="section-number">القسم ٠٧</div>
+    <h2>حقوقك</h2>
+    <p>وفقًا لنطاق قضائك، قد تتمتع بالحقوق التالية فيما يخص بياناتك الشخصية:</p>
+
+    <h3>الوصول</h3>
+    <p>يمكنك الاطلاع على بيانات حسابك ومدخلات مشاريعك والتقارير المولَّدة في أي وقت من داخل التطبيق.</p>
+
+    <h3>التصدير</h3>
+    <p>يمكنك تصدير تقارير الجدوى بصيغة PDF (متاح لمشتركي Pro وTeam). يمكنك أيضًا طلب تصدير كامل لبياناتك عن طريق التواصل معنا على <a href="mailto:level7techs@gmail.com">level7techs@gmail.com</a>.</p>
+
+    <h3>التصحيح</h3>
+    <p>يمكنك تحديث اسمك وبريدك الإلكتروني وتفضيلاتك من شاشة الإعدادات.</p>
+
+    <h3>الحذف</h3>
+    <p>يمكنك حذف دراسات بعينها من داخل التطبيق، كما يمكنك حذف حسابك بالكامل من شاشة الإعدادات، مما يؤدي إلى إزالة دائمة لجميع البيانات المرتبطة به، بما فيها ملفك الشخصي والدراسات والتقارير وسجل الدردشة وسجلات الاشتراك.</p>
+
+    <h3>التقييد والاعتراض</h3>
+    <p>يمكنك التواصل معنا لطلب تقييد معالجة بياناتك أو الاعتراض على استخدامات معينة لها.</p>
+
+    <h3>قابلية النقل</h3>
+    <p>يمكنك طلب نسخة قابلة للقراءة آليًا من بياناتك عبر التواصل معنا.</p>
+
+    <div class="info-card blue">
+      <p>لممارسة أيٍّ من هذه الحقوق، تواصل معنا على <a href="mailto:level7techs@gmail.com"><strong>level7techs@gmail.com</strong></a>.</p>
+    </div>
+  </div>
+
+  <!-- 8 ─ الاحتفاظ بالبيانات -->
+  <div class="section" id="s8">
+    <div class="section-number">القسم ٠٨</div>
+    <h2>الاحتفاظ بالبيانات</h2>
+    <ul>
+      <li><strong>الحسابات النشطة:</strong> نحتفظ ببياناتك طالما حسابك نشط والخدمة قيد الاستخدام.</li>
+      <li><strong>الدراسات المحذوفة:</strong> عند حذف دراسة، يُحذف نهائيًا من قاعدة البيانات جميع البيانات المرتبطة بها (المدخلات والتقرير ورسائل الدردشة).</li>
+      <li><strong>الحسابات المحذوفة:</strong> عند حذف حسابك، تُحذف جميع البيانات نهائيًا خلال ٣٠ يومًا. قد تستمر النسخ الاحتياطية في أنظمة النسخ الاحتياطي لمدة تصل إلى ٩٠ يومًا قبل إزالتها.</li>
+      <li><strong>الحسابات غير النشطة:</strong> قد نحذف الحسابات الخاملة لأكثر من ٢٤ شهرًا بعد إشعار عنوان البريد الإلكتروني المرتبط بها.</li>
+    </ul>
+  </div>
+
+  <!-- 9 ─ خصوصية الأطفال -->
+  <div class="section" id="s9">
+    <div class="section-number">القسم ٠٩</div>
+    <h2>خصوصية الأطفال</h2>
+    <p>لا يستهدف FeasAI من هم دون الثالثة عشرة من العمر (أو السن المحددة للموافقة الرقمية في نطاقك القضائي). لا نجمع عمدًا معلومات شخصية من الأطفال دون سن الثالثة عشرة.</p>
+    <p>إذا علمنا بجمع بيانات من طفل دون الثالثة عشرة، فسنحذف تلك المعلومات فورًا. إذا كنت تعتقد أن طفلًا دون الثالثة عشرة قد زوّدنا ببيانات شخصية، فيُرجى التواصل معنا على <a href="mailto:level7techs@gmail.com">level7techs@gmail.com</a>.</p>
+  </div>
+
+  <!-- 10 ─ النقل الدولي للبيانات -->
+  <div class="section" id="s10">
+    <div class="section-number">القسم ١٠</div>
+    <h2>النقل الدولي للبيانات</h2>
+    <p>قد تُعالَج بياناتك في نطاقات قضائية غير بلد إقامتك، إذ يعمل مزوّدو البنية التحتية السحابية لدينا على مستوى عالمي. باستخدامك الخدمة، فإنك توافق على نقل بياناتك إلى هذه النطاقات. نحرص على توفير الضمانات المناسبة لحماية بياناتك وفقًا لهذه السياسة.</p>
+  </div>
+
+  <!-- 11 ─ التغييرات -->
+  <div class="section" id="s11">
+    <div class="section-number">القسم ١١</div>
+    <h2>التغييرات على هذه السياسة</h2>
+    <p>قد نحدّث سياسة الخصوصية هذه من حين إلى آخر. سنخطرك بالتغييرات الجوهرية عبر نشر السياسة المحدَّثة داخل التطبيق وتحديث تاريخ "آخر تحديث" في أعلى هذه الصفحة. استمرارك في استخدام الخدمة بعد هذه التغييرات يُعدّ قبولًا للسياسة المحدَّثة.</p>
+  </div>
+
+  <!-- 12 ─ تواصل معنا -->
+  <div class="section" id="s12">
+    <div class="section-number">القسم ١٢</div>
+    <h2>تواصل معنا</h2>
+    <p>إذا كانت لديك أسئلة أو مخاوف أو طلبات تتعلق بسياسة الخصوصية هذه، فيُرجى التواصل معنا:</p>
+
+    <div class="contact-card">
+      <h3>تواصل معنا</h3>
+      <p style="color: var(--text-secondary); margin-bottom: 16px;">نحن هنا للإجابة على أي استفسارات تتعلق بالخصوصية.</p>
+      <a href="mailto:level7techs@gmail.com" class="contact-email">
+        ✉ &nbsp;level7techs@gmail.com
+      </a>
+    </div>
+  </div>
+
+</main>
+
+<!-- ═══ FOOTER ═══ -->
+<footer class="footer">
+  <div class="footer-links">
+    <a href="https://l7techs.github.io/FeasAi">الرئيسية</a>
+    <a href="https://l7techs.github.io/FeasAi/terms_of_service.html">شروط الخدمة</a>
+    <a href="mailto:level7techs@gmail.com">تواصل معنا</a>
+  </div>
+  <p>&copy; ٢٠٢٦ FeasAI. جميع الحقوق محفوظة.</p>
+</footer>
+
+</body>
+</html>
