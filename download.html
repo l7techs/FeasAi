@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FeasAI – Feasibility Study AI</title>
+  <meta name="description" content="AI-powered feasibility studies in minutes. Market, Financial, Risk & Legal analysis for any business idea." />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="FeasAI – Feasibility Study AI" />
+  <meta property="og:description" content="Turn your business idea into a data-backed decision. Download FeasAI." />
+  <meta property="og:image" content="logo_144.png" />
+  <meta property="og:type" content="website" />
+
+  <link rel="icon" href="logo_144.png" type="image/png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700;800&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:        #080E1A;
+      --surface:   #0F1826;
+      --card:      #141F30;
+      --border:    rgba(255,255,255,0.07);
+      --green:     #22C55E;
+      --green-dim: #166534;
+      --green-glow:rgba(34,197,94,0.25);
+      --blue:      #3B82F6;
+      --text:      #F0F6FF;
+      --muted:     #6B8099;
+      --font:      'Sora', sans-serif;
+      --mono:      'DM Mono', monospace;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      overflow-x: hidden;
+    }
+
+    /* ── Background effects ── */
+    .bg-glow {
+      position: fixed; inset: 0; pointer-events: none; z-index: 0;
+      background:
+        radial-gradient(ellipse 60% 40% at 50% -10%, rgba(34,197,94,0.13) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 30% at 80% 80%,  rgba(59,130,246,0.08) 0%, transparent 60%);
+    }
+
+    .grid-lines {
+      position: fixed; inset: 0; pointer-events: none; z-index: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+      background-size: 60px 60px;
+      mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 100%);
+    }
+
+    /* ── Layout ── */
+    .wrapper {
+      position: relative; z-index: 1;
+      width: 100%; max-width: 480px;
+      padding: 48px 24px 64px;
+      display: flex; flex-direction: column; align-items: center; gap: 0;
+    }
+
+    /* ── Header badge ── */
+    .badge {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: rgba(34,197,94,0.1);
+      border: 1px solid rgba(34,197,94,0.3);
+      border-radius: 99px;
+      padding: 5px 14px;
+      font-size: 11px; font-weight: 600; letter-spacing: 0.08em;
+      color: var(--green);
+      text-transform: uppercase;
+      margin-bottom: 32px;
+      animation: fadeDown 0.6s ease both;
+    }
+    .badge-dot {
+      width: 6px; height: 6px;
+      background: var(--green);
+      border-radius: 50%;
+      animation: pulse 2s infinite;
+    }
+
+    /* ── App icon ── */
+    .icon-wrap {
+      position: relative;
+      margin-bottom: 28px;
+      animation: fadeDown 0.6s 0.1s ease both;
+    }
+    .icon-wrap::before {
+      content: '';
+      position: absolute; inset: -20px;
+      background: radial-gradient(circle, var(--green-glow) 0%, transparent 70%);
+      border-radius: 50%;
+      animation: breathe 3s ease-in-out infinite;
+    }
+    .app-icon {
+      width: 108px; height: 108px;
+      border-radius: 24px;
+      box-shadow: 0 0 0 1px rgba(255,255,255,0.08), 0 20px 60px rgba(0,0,0,0.5);
+      position: relative; z-index: 1;
+      display: block;
+    }
+
+    /* ── Title ── */
+    .app-name {
+      font-size: 36px; font-weight: 800; letter-spacing: -0.03em;
+      text-align: center; line-height: 1.1;
+      animation: fadeDown 0.6s 0.15s ease both;
+      margin-bottom: 4px;
+    }
+    .app-name span { color: var(--green); }
+
+    .app-tagline {
+      font-size: 14px; color: var(--muted); text-align: center;
+      font-weight: 400; letter-spacing: 0.01em;
+      animation: fadeDown 0.6s 0.2s ease both;
+      margin-bottom: 40px;
+    }
+
+    /* ── Feature pills ── */
+    .features {
+      display: flex; flex-wrap: wrap; justify-content: center; gap: 8px;
+      margin-bottom: 44px;
+      animation: fadeDown 0.6s 0.25s ease both;
+    }
+    .feature-pill {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 99px;
+      padding: 6px 14px;
+      font-size: 12px; color: #9BB4CC; font-weight: 500;
+      display: flex; align-items: center; gap: 6px;
+    }
+    .feature-pill .dot {
+      width: 5px; height: 5px; border-radius: 50%;
+      background: var(--green); flex-shrink: 0;
+    }
+
+    /* ── Download buttons ── */
+    .download-section {
+      width: 100%; display: flex; flex-direction: column; gap: 14px;
+      animation: fadeUp 0.7s 0.3s ease both;
+      margin-bottom: 48px;
+    }
+
+    .store-btn {
+      display: flex; align-items: center; gap: 16px;
+      width: 100%; padding: 18px 24px;
+      border-radius: 16px;
+      text-decoration: none;
+      position: relative; overflow: hidden;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      cursor: pointer;
+    }
+    .store-btn::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(135deg, rgba(255,255,255,0.06) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .store-btn:hover { transform: translateY(-2px); }
+    .store-btn:active { transform: translateY(0); }
+
+    .store-btn.ios {
+      background: linear-gradient(135deg, #1A2744 0%, #0F1826 100%);
+      border: 1px solid rgba(59,130,246,0.3);
+      box-shadow: 0 4px 24px rgba(59,130,246,0.1), 0 1px 0 rgba(255,255,255,0.04) inset;
+    }
+    .store-btn.ios:hover {
+      box-shadow: 0 8px 32px rgba(59,130,246,0.2), 0 1px 0 rgba(255,255,255,0.04) inset;
+    }
+
+    .store-btn.android {
+      background: linear-gradient(135deg, #0E2118 0%, #081410 100%);
+      border: 1px solid rgba(34,197,94,0.3);
+      box-shadow: 0 4px 24px rgba(34,197,94,0.1), 0 1px 0 rgba(255,255,255,0.04) inset;
+    }
+    .store-btn.android:hover {
+      box-shadow: 0 8px 32px rgba(34,197,94,0.2), 0 1px 0 rgba(255,255,255,0.04) inset;
+    }
+
+    .store-icon {
+      flex-shrink: 0; width: 40px; height: 40px;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .store-icon svg { width: 32px; height: 32px; }
+
+    .store-text { flex: 1; }
+    .store-label {
+      font-size: 11px; font-weight: 500; letter-spacing: 0.06em;
+      text-transform: uppercase; opacity: 0.55; margin-bottom: 2px;
+    }
+    .store-name {
+      font-size: 18px; font-weight: 700; letter-spacing: -0.02em;
+    }
+    .ios .store-name   { color: #93C5FD; }
+    .android .store-name { color: #86EFAC; }
+
+    .store-arrow {
+      flex-shrink: 0; opacity: 0.3;
+      transition: opacity 0.2s, transform 0.2s;
+    }
+    .store-btn:hover .store-arrow { opacity: 0.7; transform: translateX(3px); }
+
+    /* Highlighted button when platform detected */
+    .store-btn.highlighted {
+      border-width: 1.5px;
+    }
+    .store-btn.ios.highlighted   { border-color: rgba(59,130,246,0.7); }
+    .store-btn.android.highlighted { border-color: rgba(34,197,94,0.7); }
+
+    .recommended-tag {
+      position: absolute; top: -1px; right: 18px;
+      background: var(--green); color: #000;
+      font-size: 10px; font-weight: 700; letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 3px 10px; border-radius: 0 0 8px 8px;
+    }
+
+    /* ── Stats row ── */
+    .stats {
+      display: flex; gap: 0; width: 100%;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px; overflow: hidden;
+      animation: fadeUp 0.7s 0.4s ease both;
+      margin-bottom: 40px;
+    }
+    .stat {
+      flex: 1; padding: 18px 12px;
+      display: flex; flex-direction: column; align-items: center; gap: 4px;
+      border-right: 1px solid var(--border);
+    }
+    .stat:last-child { border-right: none; }
+    .stat-value {
+      font-size: 20px; font-weight: 800; color: var(--green);
+      letter-spacing: -0.02em;
+    }
+    .stat-label { font-size: 11px; color: var(--muted); text-align: center; }
+
+    /* ── Footer ── */
+    .footer {
+      text-align: center; color: var(--muted); font-size: 12px;
+      animation: fadeUp 0.7s 0.5s ease both;
+      line-height: 1.6;
+    }
+    .footer a { color: #4B7DB0; text-decoration: none; }
+    .footer a:hover { color: var(--blue); }
+
+    /* ── Animations ── */
+    @keyframes fadeDown {
+      from { opacity: 0; transform: translateY(-16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50%       { opacity: 0.4; }
+    }
+    @keyframes breathe {
+      0%, 100% { transform: scale(1);    opacity: 0.6; }
+      50%       { transform: scale(1.15); opacity: 1;   }
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 380px) {
+      .app-name { font-size: 30px; }
+      .store-name { font-size: 16px; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="bg-glow"></div>
+<div class="grid-lines"></div>
+
+<div class="wrapper">
+
+  <div class="badge">
+    <span class="badge-dot"></span>
+    Now Available
+  </div>
+
+  <div class="icon-wrap">
+    <img src="logo_144.png" alt="FeasAI App Icon" class="app-icon" />
+  </div>
+
+  <h1 class="app-name">Feas<span>AI</span></h1>
+  <p class="app-tagline">Feasibility Studies, Powered by AI</p>
+
+  <div class="features">
+    <div class="feature-pill"><span class="dot"></span>Market Analysis</div>
+    <div class="feature-pill"><span class="dot"></span>Financial Projections</div>
+    <div class="feature-pill"><span class="dot"></span>Risk Assessment</div>
+    <div class="feature-pill"><span class="dot"></span>AI Chat</div>
+    <div class="feature-pill"><span class="dot"></span>PDF Export</div>
+    <div class="feature-pill"><span class="dot"></span>Compare Studies</div>
+  </div>
+
+  <div class="download-section">
+
+    <a class="store-btn ios" id="btn-ios"
+       href="https://apps.apple.com/app/id6760265259"
+       target="_blank" rel="noopener">
+      <div class="store-icon">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M18.71 19.5C17.88 20.74 17 21.95 15.66 21.97C14.32 22 13.89 21.18 12.37 21.18C10.84 21.18 10.37 21.95 9.1 22C7.78 22.05 6.8 20.68 5.96 19.47C4.25 17 2.94 12.45 4.7 9.39C5.57 7.87 7.13 6.91 8.82 6.88C10.1 6.86 11.32 7.75 12.11 7.75C12.89 7.75 14.37 6.68 15.92 6.84C16.57 6.87 18.39 7.1 19.56 8.82C19.47 8.88 17.39 10.1 17.41 12.63C17.44 15.65 20.06 16.66 20.09 16.67C20.06 16.74 19.67 18.11 18.71 19.5ZM13 3.5C13.73 2.67 14.94 2.04 15.94 2C16.07 3.17 15.6 4.35 14.9 5.19C14.21 6.04 13.07 6.7 11.95 6.61C11.8 5.46 12.36 4.26 13 3.5Z" fill="#93C5FD"/>
+        </svg>
+      </div>
+      <div class="store-text">
+        <div class="store-label">Download on the</div>
+        <div class="store-name">App Store</div>
+      </div>
+      <svg class="store-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none">
+        <path d="M9 18L15 12L9 6" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </a>
+
+    <a class="store-btn android" id="btn-android"
+       href="https://play.google.com/store/apps/details?id=com.l7techs.feas_ai"
+       target="_blank" rel="noopener">
+      <div class="store-icon">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M3.18 23.76C3.06 23.65 3 23.47 3 23.24V0.76C3 0.53 3.07 0.36 3.2 0.24L3.27 0.17L15.84 12.74V12.83L3.27 23.83L3.18 23.76Z" fill="#86EFAC"/>
+          <path d="M20.16 16.93L15.84 12.83V12.74L20.16 8.64L20.25 8.69L25.34 11.61C26.78 12.43 26.78 13.77 25.34 14.6L20.25 17.52L20.16 16.93Z" fill="#86EFAC" opacity="0.8"/>
+          <path d="M20.25 17.52L15.84 13.12L3.18 23.76C3.65 24.2 4.38 24.25 5.2 23.78L20.25 17.52Z" fill="#86EFAC" opacity="0.6"/>
+          <path d="M20.25 8.69L5.2 2.43C4.38 1.96 3.65 2.01 3.18 2.45L15.84 13.09L20.25 8.69Z" fill="#86EFAC" opacity="0.6"/>
+        </svg>
+      </div>
+      <div class="store-text">
+        <div class="store-label">Get it on</div>
+        <div class="store-name">Google Play</div>
+      </div>
+      <svg class="store-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none">
+        <path d="M9 18L15 12L9 6" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </a>
+
+  </div>
+
+  <div class="stats">
+    <div class="stat">
+      <div class="stat-value">9</div>
+      <div class="stat-label">Report Sections</div>
+    </div>
+    <div class="stat">
+      <div class="stat-value">AI</div>
+      <div class="stat-label">Powered Analysis</div>
+    </div>
+    <div class="stat">
+      <div class="stat-value">PDF</div>
+      <div class="stat-label">Export Ready</div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <p>By <strong style="color:#9BB4CC">L7Techs</strong> &nbsp;·&nbsp;
+      <a href="https://l7techs.github.io/FeasAi/privacy_policy.html">Privacy Policy</a>
+      &nbsp;·&nbsp;
+      <a href="https://l7techs.github.io/FeasAi/terms_of_service.html">Terms</a>
+    </p>
+    <p style="margin-top:8px; font-size:11px; opacity:0.5">
+      © 2025 L7Techs. All rights reserved.
+    </p>
+  </div>
+
+</div>
+
+<script>
+  (function () {
+    const ua = navigator.userAgent || '';
+    const isIOS     = /iPhone|iPad|iPod/i.test(ua);
+    const isAndroid = /Android/i.test(ua);
+
+    const btnIOS     = document.getElementById('btn-ios');
+    const btnAndroid = document.getElementById('btn-android');
+
+    if (isIOS) {
+      btnIOS.classList.add('highlighted');
+      btnIOS.innerHTML += '<div class="recommended-tag">Recommended</div>';
+      // Auto-redirect after short delay
+      setTimeout(() => {
+        window.location.href = 'https://apps.apple.com/app/id6760265259';
+      }, 1800);
+    } else if (isAndroid) {
+      btnAndroid.classList.add('highlighted');
+      btnAndroid.innerHTML += '<div class="recommended-tag">Recommended</div>';
+      setTimeout(() => {
+        window.location.href = 'https://play.google.com/store/apps/details?id=com.l7techs.feas_ai';
+      }, 1800);
+    }
+  })();
+</script>
+
+</body>
+</html>
