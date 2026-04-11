@@ -782,29 +782,29 @@
       box-shadow: 0 0 8px var(--glow-primary);
     }
 
-    /* ─── Hero Mouse Glow ──────────────────────────────── */
-    .hero-mouse-glow {
-      position: absolute;
+    /* ─── Page Mouse Glow ──────────────────────────────── */
+    .page-mouse-glow {
+      position: fixed;
       width: 600px;
       height: 600px;
       border-radius: 50%;
-      background: radial-gradient(circle, rgba(59,130,246,0.12) 0%, rgba(20,184,166,0.06) 40%, transparent 70%);
+      background: radial-gradient(circle, rgba(59,130,246,0.10) 0%, rgba(20,184,166,0.05) 40%, transparent 70%);
       pointer-events: none;
       transform: translate(-50%, -50%);
       opacity: 0;
       transition: opacity 0.4s ease;
-      z-index: 0;
+      z-index: 1;
       will-change: transform;
     }
-    .hero:hover .hero-mouse-glow { opacity: 1; }
+    body:hover .page-mouse-glow { opacity: 1; }
 
     /* ─── Floating Parallax Particles ──────────────────── */
     .parallax-particles {
-      position: absolute;
+      position: fixed;
       inset: 0;
       overflow: hidden;
       pointer-events: none;
-      z-index: 0;
+      z-index: 1;
     }
 
     .parallax-particle {
@@ -1001,14 +1001,14 @@
         transition: none;
       }
       .scroll-progress { display: none; }
-      .hero-mouse-glow { display: none; }
+      .page-mouse-glow { display: none; }
       .parallax-particles { display: none; }
       .step-number { transition: none; }
     }
 
     /* ─── Mobile: disable heavy effects ────────────────── */
     @media (max-width: 768px) {
-      .hero-mouse-glow { display: none; }
+      .page-mouse-glow { display: none; }
       .parallax-particles { display: none; }
       .pricing-card-glow { display: none; }
     }
@@ -1018,6 +1018,8 @@
 
 <!-- ═══ SCROLL PROGRESS BAR ═══ -->
 <div class="scroll-progress" id="scrollProgress"></div>
+<div class="page-mouse-glow" id="pageGlow"></div>
+<div class="parallax-particles" id="parallaxParticles"></div>
 
 <!-- ═══ NAVIGATION ═══ -->
 <nav class="nav">
@@ -1041,8 +1043,6 @@
 
 <!-- ═══ HERO ═══ -->
 <section class="hero" id="hero">
-  <div class="hero-mouse-glow" id="heroGlow"></div>
-  <div class="parallax-particles" id="parallaxParticles"></div>
   <div class="container">
     <div class="badge">&#10022; AI-Powered Analysis</div>
     <h1 class="hero-title" style="margin-top: 20px;">
@@ -1403,18 +1403,14 @@
   );
   document.querySelectorAll('.scale-in').forEach(el => scaleObserver.observe(el));
 
-  // ─── Hero Mouse Glow ───────────────────────────────
-  const hero = document.getElementById('hero');
-  const heroGlow = document.getElementById('heroGlow');
+  // ─── Page Mouse Glow ────────────────────────────────
+  const pageGlow = document.getElementById('pageGlow');
   const isMobile = window.matchMedia('(max-width: 768px)').matches;
 
-  if (!isMobile && heroGlow) {
-    hero.addEventListener('mousemove', e => {
-      const rect = hero.getBoundingClientRect();
-      const x = e.clientX - rect.left;
-      const y = e.clientY - rect.top;
-      heroGlow.style.left = x + 'px';
-      heroGlow.style.top = y + 'px';
+  if (!isMobile && pageGlow) {
+    document.addEventListener('mousemove', e => {
+      pageGlow.style.left = e.clientX + 'px';
+      pageGlow.style.top = e.clientY + 'px';
     });
   }
 
